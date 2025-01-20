@@ -12,6 +12,7 @@ class Assets {
   static const String imageAppLogo = 'assets/image/app_logo.png';
   static const String imageAppStore = 'assets/image/app_store.png';
   static const String imageAppleLogo = 'assets/image/apple_logo.png';
+  static const String imageLogo = 'assets/image/logo.png';
   static const String imageArabic = 'assets/image/arabic.png';
   static const String imageBd = 'assets/image/bd.png';
   static const String imageBox = 'assets/image/box.png';

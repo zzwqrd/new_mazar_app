@@ -1,4 +1,4 @@
-package com.example.maza
+package com.octopus.AbdoMarket
 
 import io.flutter.embedding.android.FlutterActivity
 

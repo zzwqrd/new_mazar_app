@@ -11,9 +11,7 @@ import 'package:mazar/helper/responsive_helper.dart';
 import 'package:mazar/helper/route_helper.dart';
 import 'package:mazar/localization/app_localization.dart';
 import 'package:mazar/utill/app_constants.dart';
-import 'package:mazar/utill/dimensions.dart';
 import 'package:mazar/utill/images.dart';
-import 'package:mazar/utill/styles.dart';
 import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -124,14 +122,14 @@ class _SplashScreenState extends State<SplashScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Image.asset(Images.appLogo, height: 130, width: 500),
-          const SizedBox(height: Dimensions.paddingSizeSmall),
-          Text(AppConstants.appName,
-              textAlign: TextAlign.center,
-              style: poppinsMedium.copyWith(
-                color: Theme.of(context).primaryColor,
-                fontSize: 30,
-              )),
+          Image.asset(Images.moreLogo, height: 130, width: 500),
+          // const SizedBox(height: Dimensions.paddingSizeSmall),
+          // Text(AppConstants.appName,
+          //     textAlign: TextAlign.center,
+          //     style: poppinsMedium.copyWith(
+          //       color: Theme.of(context).primaryColor,
+          //       fontSize: 30,
+          //     )),
         ],
       ),
     );

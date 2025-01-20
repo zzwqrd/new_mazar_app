@@ -1,8 +1,3 @@
-import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
-
-import '../common/providers/theme_provider.dart';
-
 class Images {
   static const String moreIcon = 'assets/image/more_icon.png';
   static const String englandFlag = 'assets/image/england.png';
@@ -51,23 +46,24 @@ class Images {
   static const String walletCardShape = 'assets/image/wallet_card_shape.png';
   static const String walletIcon = 'assets/image/wallet_icon.png';
   static const String walletBanner = 'assets/image/wallet_banner.png';
-  static const String locationBannerImage = 'assets/image/location_banner_image.png';
-  static const String favouriteNoDataImage = 'assets/image/favourite_no_data.png';
+  static const String locationBannerImage =
+      'assets/image/location_banner_image.png';
+  static const String favouriteNoDataImage =
+      'assets/image/favourite_no_data.png';
   static const String emptyOrderImage = 'assets/image/empty_order_image.png';
-
-
-
-
 
   // Image
   static const String appLogo = 'assets/image/app_logo.png';
-  static const String webBarLogoPlaceHolder = 'assets/image/web_bar_logo_place_holder.png';
+  static const String moreLogo = 'assets/image/logo.png';
+  static const String webBarLogoPlaceHolder =
+      'assets/image/web_bar_logo_place_holder.png';
   static const String onBoarding1 = 'assets/image/on_boarding_1.png';
   static const String onBoarding2 = 'assets/image/on_boarding_2.png';
   static const String onBoarding3 = 'assets/image/on_boarding_3.png';
   static const String closeLock = 'assets/image/close_lock.png';
   static const String openLock = 'assets/image/open_lock.png';
-  static const String emailWithBackground = 'assets/image/email_with_background.png';
+  static const String emailWithBackground =
+      'assets/image/email_with_background.png';
   static const String cartIcon = 'assets/image/cart.png';
   static const String couponBg = 'assets/image/coupon_bg.png';
   static const String percentage = 'assets/image/percentage.png';
@@ -78,11 +74,14 @@ class Images {
 
   static const String camera = 'assets/image/camera.png';
   static const String restaurantMarker = 'assets/image/restaurant_marker.png';
-  static const String deliveryBoyMarker = 'assets/image/delivery_boy_marker.png';
+  static const String deliveryBoyMarker =
+      'assets/image/delivery_boy_marker.png';
   static const String destinationMarker = 'assets/image/destination_marker.png';
-  static const String unselectedRestaurantMarker = 'assets/image/unselected_restaurant_marker.png';
+  static const String unselectedRestaurantMarker =
+      'assets/image/unselected_restaurant_marker.png';
   static const String facebook = 'assets/image/facebook.png';
-  static const String facebookSocialLogo = 'assets/image/facebook_social_logo.png';
+  static const String facebookSocialLogo =
+      'assets/image/facebook_social_logo.png';
   static const String twitter = 'assets/image/twitter.png';
   static const String youtube = 'assets/image/youtube.png';
   static const String playStore = 'assets/image/play_store.png';
@@ -104,8 +103,10 @@ class Images {
   static const String orderPlace = 'assets/image/order_place.png';
   static const String wareHouse = 'assets/image/ware_house.png';
   static const String couponApply = 'assets/image/coupon_apply.png';
-  static const String deliveryAddressIcon = 'assets/image/delivery_address_icon.png';
-  static const String cancellationPolicy = 'assets/image/cancellation_policy.png';
+  static const String deliveryAddressIcon =
+      'assets/image/delivery_address_icon.png';
+  static const String cancellationPolicy =
+      'assets/image/cancellation_policy.png';
 
   //svg
   static const String addressList = 'assets/svg/address_list.svg';
@@ -116,7 +117,8 @@ class Images {
   static const String orderList = 'assets/svg/order_list.svg';
   static const String trackOrder = 'assets/svg/track_order.svg';
   static const String privacyPolicy = 'assets/svg/privacy_policy.svg';
-  static const String termsAndConditions = 'assets/svg/terms_and_conditions.svg';
+  static const String termsAndConditions =
+      'assets/svg/terms_and_conditions.svg';
   static const String aboutUs = 'assets/svg/about_us.svg';
   static const String notification = 'assets/svg/notification.svg';
   static const String refer = 'assets/svg/refer.svg';
@@ -129,9 +131,6 @@ class Images {
   static const String orderFailed = 'assets/svg/order_failed.svg';
   static const String refundPolicy = 'assets/svg/refund_policy.svg';
 
-
   static String getShareIcon(String name) => 'assets/image/$name.png';
   static String getPaymentImage(String name) => 'assets/payment/$name.png';
-
-
 }

@@ -934,7 +934,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
       title: pageIndex == 0
           ? Image.asset(
-              Images.appLogo,
+              Images.moreLogo,
               width: 30,
             )
           // Row(
