@@ -11,7 +11,6 @@ import 'package:mazar/features/splash/providers/splash_provider.dart';
 import 'package:mazar/helper/responsive_helper.dart';
 import 'package:mazar/localization/language_constraints.dart';
 import 'package:mazar/utill/dimensions.dart';
-import 'package:mazar/utill/images.dart';
 import 'package:mazar/utill/styles.dart';
 import 'package:provider/provider.dart';
 
@@ -48,12 +47,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
           : AppBar(
               backgroundColor: Theme.of(context).cardColor,
               leading: IconButton(
-                  icon: Image.asset(Images.moreIcon,
-                      color: Theme.of(context).primaryColor),
-                  onPressed: () {
-                    splashProvider.setPageIndex(0);
-                    Navigator.of(context).pop();
-                  }),
+                icon: const Icon(
+                  Icons.arrow_back_ios,
+                  size: 20,
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                // onPressed: () {
+                //   Scaffold.of(context).openDrawer();
+                // },
+              ),
+              // leading: IconButton(
+              //     icon: Image.asset(Images.moreIcon,
+              //         color: Theme.of(context).primaryColor),
+              //     onPressed: () {
+              //       splashProvider.setPageIndex(0);
+              //       Navigator.of(context).pop();
+              //     }),
               title: Text(getTranslated('profile', context),
                   style: poppinsMedium.copyWith(
                     fontSize: Dimensions.fontSizeSmall,

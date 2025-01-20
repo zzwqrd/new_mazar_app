@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mazar/common/enums/html_type_enum.dart';
 import 'package:mazar/common/providers/cart_provider.dart';
 import 'package:mazar/common/providers/theme_provider.dart';
@@ -153,26 +154,44 @@ class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ListView.builder(
-        itemCount: screenList.length,
-        itemBuilder: (context, index) {
-          final screen = screenList[index];
-          return ListTile(
-            // leading: Image.asset(
-            //   screen.iconPath, // أيقونة العنصر
-            //   width: 24,
-            //   height: 24,
-            // ),
-            title: Text(
-              getTranslated(screen.title, context), // ترجمة العنوان
-              style: const TextStyle(fontSize: 16),
-            ),
-            onTap: () {
-              Navigator.pop(context); // إغلاق الـ Drawer
-              onItemTap(index); // تنفيذ التنقل
-            },
-          );
-        },
+      child: SafeArea(
+        child: ListView.builder(
+          padding: const EdgeInsets.only(top: 20),
+          itemCount: screenList.length,
+          itemBuilder: (context, index) {
+            final screen = screenList[index];
+            return ListTile(
+              leading: screen.icon.endsWith('.svg')
+                  ? SvgPicture.asset(
+                      screen.icon,
+                      width: 24,
+                      height: 24,
+                      fit: BoxFit.cover,
+                      color: const Color(0xFF0069AA),
+                    )
+                  : Image.asset(
+                      screen.icon,
+                      width: 24,
+                      height: 24,
+                      fit: BoxFit.cover,
+                      color: const Color(0xFF0069AA),
+                    ),
+              // leading: SvgPicture.asset(
+              //   screen.icon,
+              //   width: 24,
+              //   height: 24,
+              // ),
+              title: Text(
+                getTranslated(screen.title, context),
+                style: const TextStyle(fontSize: 16),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                onItemTap(index);
+              },
+            );
+          },
+        ),
       ),
     );
   }

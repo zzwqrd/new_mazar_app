@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mazar/common/providers/cart_provider.dart';
 import 'package:mazar/common/providers/theme_provider.dart';
 import 'package:mazar/common/widgets/custom_asset_image_widget.dart';
@@ -25,7 +24,6 @@ import 'package:mazar/utill/images.dart';
 import 'package:mazar/utill/styles.dart';
 import 'package:provider/provider.dart';
 
-import '../../../generated/assets.dart';
 import '../../../main.dart';
 import '../../../utill/app_constants.dart';
 import '../../cart/screens/cart_screen.dart';
@@ -34,6 +32,7 @@ import '../../home/screens/home_screens.dart';
 import '../../wishlist/screens/wishlist_screen.dart';
 import '../domain/models/main_screen_model.dart';
 
+//ezzmuhyammed22@gmal.com
 class MenuScreen extends StatefulWidget {
   final bool isReload;
   const MenuScreen({Key? key, this.isReload = true}) : super(key: key);
@@ -166,28 +165,33 @@ class _MenuScreenState extends State<MenuScreen> {
       floatingActionButton: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const SizedBox(height: 13),
+          // const SizedBox(height: 13),
           FloatingActionButton(
-            mini: true,
+            // mini: true,
             onPressed: () {
               setState(() {
-                _currentIndex = 2; // الذهاب إلى صفحة الإعلانات
+                _currentIndex = 2;
               });
             },
-            backgroundColor: Colors.blue,
+            backgroundColor: const Color(0xFF0069AA),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(100),
             ),
-            child: const Icon(
-              Icons.add,
-              size: 30,
+            child: Image.asset(
+              Images.orderBag,
+              width: 22,
             ),
+            // child: const Icon(
+            //   Icons.shopping_bag_outlined,
+            //   size: 25,
+            //   color: Colors.white,
+            // ),
           ),
-          const SizedBox(height: 3),
-          const Text(
-            'اضف اعلان',
-            style: TextStyle(fontSize: 12),
-          ),
+          // const SizedBox(height: 3),
+          // const Text(
+          //   "عربة التسوق",
+          //   style: TextStyle(fontSize: 12),
+          // ),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -208,20 +212,45 @@ class _MenuScreenState extends State<MenuScreen> {
     }
   }
 
-  Widget buildNavItem({
-    required BuildContext context,
-    required int index,
-    required String icon,
-    required bool isActive,
-  }) {
+  Widget buildNavItem(
+      {required BuildContext context,
+      required int index,
+      required dynamic icon,
+      required bool isActive,
+      required String label}) {
     return GestureDetector(
       onTap: () => _onItemTapped(index),
-      child: SvgPicture.asset(
-        icon,
-        width: 24,
-        fit: BoxFit.cover,
-        color: isActive ? Colors.amber : Colors.red,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Image.asset(
+            icon,
+            width: 24,
+            fit: BoxFit.cover,
+            color: isActive ? const Color(0xFF0069AA) : const Color(0xFFC9CAD6),
+          ),
+          // Icon(
+          //   icon,
+          //   size: 24,
+          //   color: isActive ? const Color(0xFFEF5730) : const Color(0xFFC9CAD6),
+          // ),
+          const SizedBox(height: 4),
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              color:
+                  isActive ? const Color(0xFF0069AA) : const Color(0xFFC9CAD6),
+            ),
+          ),
+        ],
       ),
+      // child: SvgPicture.asset(
+      //   icon,
+      //   width: 24,
+      //   fit: BoxFit.cover,
+      //   color: isActive ? Colors.amber : Colors.red,
+      // ),
     );
   }
 
@@ -244,26 +273,30 @@ class _MenuScreenState extends State<MenuScreen> {
           buildNavItem(
             context: context,
             index: 0,
-            icon: Assets.svgRefundPolicy,
+            icon: Images.home,
+            label: "الرئيسية",
             isActive: _currentIndex == 0,
           ),
           buildNavItem(
             context: context,
             index: 1,
-            icon: Assets.svgRefundPolicy,
+            icon: Images.list,
+            label: "الفئات",
             isActive: _currentIndex == 1,
           ),
           const SizedBox(width: 23),
           buildNavItem(
             context: context,
             index: 3,
-            icon: Assets.svgRefundPolicy,
+            icon: Images.favouriteIcon,
+            label: "المفضله",
             isActive: _currentIndex == 3,
           ),
           buildNavItem(
             context: context,
             index: 4,
-            icon: Assets.svgRefundPolicy,
+            icon: Images.settings,
+            label: "الاعددات",
             isActive: _currentIndex == 4,
           ),
         ],
@@ -874,6 +907,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      centerTitle: true,
       backgroundColor: Theme.of(context).cardColor,
       leading: isHome
           ? StatefulBuilder(builder: (context, state) {
@@ -899,24 +933,32 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               // },
             ),
       title: pageIndex == 0
-          ? Row(
-              children: [
-                Image.asset(Images.appLogo,
-                    width: 25), // Replace with your logo
-                const SizedBox(width: 8),
-                Expanded(
-                  child: Text(
-                    appName ?? '',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: Theme.of(context).primaryColor,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ],
+          ? Image.asset(
+              Images.appLogo,
+              width: 30,
             )
+          // Row(
+          //         crossAxisAlignment: CrossAxisAlignment.center,
+          //         mainAxisAlignment: MainAxisAlignment.center,
+          //         children: [
+          //           Image.asset(
+          //             Images.appLogo,
+          //             width: 25,
+          //           ), // Replace with your logo
+          //           // const SizedBox(width: 8),
+          //           // Expanded(
+          //           //   child: Text(
+          //           //     appName ?? '',
+          //           //     maxLines: 1,
+          //           //     overflow: TextOverflow.ellipsis,
+          //           //     style: TextStyle(
+          //           //       color: Theme.of(context).primaryColor,
+          //           //       fontWeight: FontWeight.bold,
+          //           //     ),
+          //           //   ),
+          //           // ),
+          //         ],
+          //       )
           : Text(
               title ?? '',
               style: TextStyle(
