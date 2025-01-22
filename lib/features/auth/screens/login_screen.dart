@@ -21,6 +21,8 @@ import 'package:mazar/utill/images.dart';
 import 'package:mazar/utill/styles.dart';
 import 'package:provider/provider.dart';
 
+import '../widgets/country_code_picker_widget.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -35,8 +37,8 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController? _emailController;
   TextEditingController? _passwordController;
   GlobalKey<FormState>? _formKeyLogin;
-  bool email = false;
-  bool phone = true;
+  bool email = true;
+  bool phone = false;
   String? countryCode;
 
   @override
@@ -138,58 +140,49 @@ class _LoginScreenState extends State<LoginScreen> {
                                       .withOpacity(0.6)),
                             )
                           : Text(
-                              getTranslated('email', context),
+                              getTranslated('mobile_number', context),
                               style: poppinsRegular.copyWith(
                                   color: Theme.of(context)
                                       .hintColor
                                       .withOpacity(0.6)),
                             ),
                       const SizedBox(height: Dimensions.paddingSizeSmall),
-                      CustomTextFieldWidget(
-                        hintText: getTranslated('demo_gmail', context),
-                        isShowBorder: true,
-                        focusNode: _emailFocus,
-                        nextFocus: _passwordFocus,
-                        controller: _emailController,
-                        inputType: TextInputType.emailAddress,
-                      ),
-                      // (configModel.emailVerification ?? false)
-                      //     ? CustomTextFieldWidget(
-                      //         hintText: getTranslated('demo_gmail', context),
-                      //         isShowBorder: true,
-                      //         focusNode: _emailFocus,
-                      //         nextFocus: _passwordFocus,
-                      //         controller: _emailController,
-                      //         inputType: TextInputType.emailAddress,
-                      //       )
-                      //     : Row(children: [
-                      //         CountryCodePickerWidget(
-                      //           onChanged: (CountryCode value) {
-                      //             countryCode = value.dialCode;
-                      //           },
-                      //           initialSelection: countryCode,
-                      //           favorite: [countryCode!],
-                      //           showDropDownButton: true,
-                      //           padding: EdgeInsets.zero,
-                      //           showFlagMain: true,
-                      //           textStyle: TextStyle(
-                      //               color: Theme.of(context)
-                      //                   .textTheme
-                      //                   .displayLarge
-                      //                   ?.color),
-                      //         ),
-                      //         Expanded(
-                      //           child: CustomTextFieldWidget(
-                      //             hintText:
-                      //                 getTranslated('number_hint', context),
-                      //             isShowBorder: true,
-                      //             focusNode: _numberFocus,
-                      //             nextFocus: _passwordFocus,
-                      //             controller: _emailController,
-                      //             inputType: TextInputType.phone,
-                      //           ),
-                      //         ),
-                      //       ]),
+
+                      (configModel.emailVerification ?? false)
+                          ? CustomTextFieldWidget(
+                              hintText: getTranslated('demo_gmail', context),
+                              isShowBorder: true,
+                              focusNode: _emailFocus,
+                              nextFocus: _passwordFocus,
+                              controller: _emailController,
+                              inputType: TextInputType.emailAddress,
+                            )
+                          : Row(children: [
+                              CountryCodePickerWidget(
+                                onChanged: (CountryCode value) {
+                                  countryCode = value.dialCode;
+                                },
+                                initialSelection: countryCode,
+                                favorite: [countryCode!],
+                                showDropDownButton: true,
+                                padding: EdgeInsets.zero,
+                                showFlagMain: true,
+                                textStyle: TextStyle(
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .displayLarge
+                                        ?.color),
+                              ),
+                              Expanded(
+                                  child: CustomTextFieldWidget(
+                                hintText: getTranslated('number_hint', context),
+                                isShowBorder: true,
+                                focusNode: _numberFocus,
+                                nextFocus: _passwordFocus,
+                                controller: _emailController,
+                                inputType: TextInputType.phone,
+                              )),
+                            ]),
                       const SizedBox(height: Dimensions.paddingSizeLarge),
 
                       Text(
@@ -348,25 +341,41 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ])),
                       ),
 
-                      // if(socialStatus!.isFacebook! || socialStatus.isGoogle!)
-                      //   Center(child: SocialLoginWidget(countryCode: countryCode)),
-
+                      // if (socialStatus!.isFacebook! || socialStatus.isGoogle!)
+                      //   Center(
+                      //       child: SocialLoginWidget(countryCode: countryCode)),
+                      //
                       // Center(
                       //     child: Text(getTranslated('OR', context),
                       //         style: poppinsRegular.copyWith(fontSize: 12))),
-
-                      // Center(child: TextButton(
+                      //
+                      // Center(
+                      //     child: TextButton(
                       //   style: TextButton.styleFrom(
                       //     minimumSize: const Size(1, 40),
                       //   ),
                       //   onPressed: () {
-                      //     Navigator.pushReplacementNamed(context, RouteHelper.menu);
+                      //     Navigator.pushReplacementNamed(
+                      //         context, RouteHelper.menu);
                       //   },
-                      //   child: RichText(text: TextSpan(children: [
-                      //     TextSpan(text: '${getTranslated('continue_as_a', context)} ',  style: poppinsRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor.withOpacity(0.6))),
-                      //     TextSpan(text: getTranslated('guest', context), style: poppinsRegular.copyWith(color: Theme.of(context).textTheme.bodyLarge!.color)),
+                      //   child: RichText(
+                      //       text: TextSpan(children: [
+                      //     TextSpan(
+                      //         text:
+                      //             '${getTranslated('continue_as_a', context)} ',
+                      //         style: poppinsRegular.copyWith(
+                      //             fontSize: Dimensions.fontSizeSmall,
+                      //             color: Theme.of(context)
+                      //                 .hintColor
+                      //                 .withOpacity(0.6))),
+                      //     TextSpan(
+                      //         text: getTranslated('guest', context),
+                      //         style: poppinsRegular.copyWith(
+                      //             color: Theme.of(context)
+                      //                 .textTheme
+                      //                 .bodyLarge!
+                      //                 .color)),
                       //   ])),
-                      //
                       // )),
 
                       if (ResponsiveHelper.isDesktop(context))
@@ -421,9 +430,9 @@ class _LoginScreenState extends State<LoginScreen> {
     String email = _emailController?.text.trim() ?? '';
     String password = _passwordController?.text.trim() ?? '';
 
-    // if (!splashProvider.configModel!.emailVerification!) {
-    //   email = countryCode! + _emailController!.text.trim();
-    // }
+    if (!splashProvider.configModel!.emailVerification!) {
+      email = countryCode! + _emailController!.text.trim();
+    }
 
     if (email.isEmpty) {
       if (splashProvider.configModel!.emailVerification!) {
